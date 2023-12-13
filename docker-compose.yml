@@ -1,0 +1,11 @@
+version: '3'
+services:
+     nginx:
+         container_name:  pusk
+         image: pusk
+         restart: always
+         environment:
+             - TZ=Asia/Yekaterinburg
+         ports:
+             - 8080:8080
+         command: '/bin/sh -c ''while :;/start.sh; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g "daemon off;"'''
